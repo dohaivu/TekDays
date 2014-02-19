@@ -5,9 +5,9 @@ package com.tekdays
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(TekUserController)
-@Mock(TekUser)
-class TekUserControllerSpec extends Specification {
+@TestFor(SponsorController)
+@Mock(Sponsor)
+class SponsorControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class TekUserControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.tekUserInstanceList
-            model.tekUserInstanceCount == 0
+            !model.sponsorInstanceList
+            model.sponsorInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,31 +30,31 @@ class TekUserControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.tekUserInstance!= null
+            model.sponsorInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
 
         when:"The save action is executed with an invalid instance"
-            def tekUser = new TekUser()
-            tekUser.validate()
-            controller.save(tekUser)
+            def sponsor = new Sponsor()
+            sponsor.validate()
+            controller.save(sponsor)
 
         then:"The create view is rendered again with the correct model"
-            model.tekUserInstance!= null
+            model.sponsorInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            tekUser = new TekUser(params)
+            sponsor = new Sponsor(params)
 
-            controller.save(tekUser)
+            controller.save(sponsor)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/tekUser/show/1'
+            response.redirectedUrl == '/sponsor/show/1'
             controller.flash.message != null
-            TekUser.count() == 1
+            Sponsor.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,11 +66,11 @@ class TekUserControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def tekUser = new TekUser(params)
-            controller.show(tekUser)
+            def sponsor = new Sponsor(params)
+            controller.show(sponsor)
 
         then:"A model is populated containing the domain instance"
-            model.tekUserInstance == tekUser
+            model.sponsorInstance == sponsor
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -82,11 +82,11 @@ class TekUserControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def tekUser = new TekUser(params)
-            controller.edit(tekUser)
+            def sponsor = new Sponsor(params)
+            controller.edit(sponsor)
 
         then:"A model is populated containing the domain instance"
-            model.tekUserInstance == tekUser
+            model.sponsorInstance == sponsor
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -94,28 +94,28 @@ class TekUserControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/tekUser/index'
+            response.redirectedUrl == '/sponsor/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def tekUser = new TekUser()
-            tekUser.validate()
-            controller.update(tekUser)
+            def sponsor = new Sponsor()
+            sponsor.validate()
+            controller.update(sponsor)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.tekUserInstance == tekUser
+            model.sponsorInstance == sponsor
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            tekUser = new TekUser(params).save(flush: true)
-            controller.update(tekUser)
+            sponsor = new Sponsor(params).save(flush: true)
+            controller.update(sponsor)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/tekUser/show/$tekUser.id"
+            response.redirectedUrl == "/sponsor/show/$sponsor.id"
             flash.message != null
     }
 
@@ -124,23 +124,23 @@ class TekUserControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/tekUser/index'
+            response.redirectedUrl == '/sponsor/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def tekUser = new TekUser(params).save(flush: true)
+            def sponsor = new Sponsor(params).save(flush: true)
 
         then:"It exists"
-            TekUser.count() == 1
+            Sponsor.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(tekUser)
+            controller.delete(sponsor)
 
         then:"The instance is deleted"
-            TekUser.count() == 0
-            response.redirectedUrl == '/tekUser/index'
+            Sponsor.count() == 0
+            response.redirectedUrl == '/sponsor/index'
             flash.message != null
     }
 }
