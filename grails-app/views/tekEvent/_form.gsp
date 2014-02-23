@@ -111,7 +111,7 @@
     <li><g:link controller="tekMessage" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="tekMessage" action="create" params="['tekEvent.id': tekEventInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'tekMessage.label', default: 'TekMessage')])}</g:link>
+<g:link controller="tekMessage" action="create" params="['event.id': tekEventInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'tekMessage.label', default: 'TekMessage')])}</g:link>
 </li>
 </ul>
 
