@@ -11,6 +11,13 @@
         <p>TekDays.com is a site dedicated to assisting individuals and
         communities to organize technology conferences. To bring great minds with common interests and passions together for the good of greater geekdom!</p>
     </div>
+    <div id="homeSearch">
+        <g:form controller="tekEvent" action="search"> <label>Search:</label>
+            <input id="query" type="text" name="query" /> <input type=submit value="Go" />
+        </g:form>
+    </div>
+    <g:organizerEvents />
+    <g:volunteerEvents />
     <div class="homeCell">
         <h3>Find a Tek Event</h3>
         <p> See if there's a technical event in the works that strikes your

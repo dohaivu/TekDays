@@ -14,6 +14,7 @@ class TekEvent {
     sponsorships nullable: true
     tasks nullable: true
     messages nullable: true
+    nickname nullable: true
   }
 
   String city
@@ -23,7 +24,9 @@ class TekEvent {
   Date startDate
   Date endDate
   String description
+  String nickname
 
+  static searchable = true
   static hasMany = [
     volunteers: TekUser, 
     respondents: String, 
@@ -34,4 +37,5 @@ class TekEvent {
   String toString() {
     "$name, $city" 
   }
+
 }

@@ -16,14 +16,43 @@ class TekEventController {
         respond TekEvent.list(params), model:[tekEventInstanceCount: TekEvent.count()]
     }
 
-    def show(TekEvent tekEventInstance) {
-        respond tekEventInstance
+    def show(Long id) {
+        def tekEventInstance
+        if (params.nickname) {
+            tekEventInstance = TekEvent.findByNickname(params.nickname)
+        } else {
+            tekEventInstance = TekEvent.get(params.id)
+        }
+        if (!tekEventInstance) {
+            if(params.nickname){
+                flash.message = "TekEvent not found with nickname ${params.nickname}"
+            }
+            else {
+                flash.message = "TekEvent not found with id $id" }
+            redirect(action: "list")
+            return
+        }
+
+        [tekEventInstance: tekEventInstance]
     }
 
     def create() {
         respond new TekEvent(params)
     }
 
+    def search = {
+        if (params.query) {
+            def events = TekEvent.search(params.query).results
+            [events: events]
+        }
+    }
+
+    def volunteer = {
+        def event = TekEvent.get(params.id)
+        event.addToVolunteers(session.user)
+        event.save()
+        render "Thank you for Volunteering"
+    }
     @Transactional
     def save(TekEvent tekEventInstance) {
         if (tekEventInstance == null) {

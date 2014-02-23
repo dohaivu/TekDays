@@ -91,6 +91,12 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.47/tomcat-embed-jasper-7.0.47.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ant/7.0.47/tomcat-catalina-ant-7.0.47.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/2.4.1/lucene-core-2.4.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/compass-project/compass/2.2.1/compass-2.2.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/twitter4j/twitter4j-core/2.2.5/twitter4j-core-2.2.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/twitter4j/twitter4j-stream/2.2.5/twitter4j-stream-2.2.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/twitter4j/twitter4j-async/2.2.5/twitter4j-async-2.2.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
