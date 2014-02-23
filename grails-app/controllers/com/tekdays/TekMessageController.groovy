@@ -15,6 +15,7 @@ class TekMessageController {
 
         def list
         def count
+
         def event = TekEvent.get(params.id)
         if(event) {
             list = TekMessage.findAllByEvent(event, params)
@@ -44,6 +45,13 @@ class TekMessageController {
 
     def create() {
         respond new TekMessage(params)
+    }
+
+    def reply = {
+        def parent = TekMessage.get(params.id)
+        def tekMessageInstance = new TekMessage(parent: parent, event: parent.event,
+            subject: "RE:$parent.subject")
+        render view: 'create', model:['tekMessageInstance': tekMessageInstance]
     }
 
     @Transactional
