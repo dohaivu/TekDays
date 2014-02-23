@@ -31,7 +31,7 @@
 	</ol>
 	<g:form>
 		<fieldset class="buttons">
-			<g:link class="create" action="reply" resource="${tekMessageInstance}"></g:link>			
+			<g:link class="create" action="reply" resource="${tekMessageInstance}">Reply</g:link>			
 		</fieldset>
 	</g:form>
 </div>
